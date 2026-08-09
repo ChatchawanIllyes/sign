@@ -42,11 +42,7 @@ namespace Sign.Core
             catch (Exception exception) when (
                 exception is IOException or
                 UnauthorizedAccessException or
-                InvalidOperationException or
-                System.Xml.XmlException or
-                ArgumentException or
-                NotSupportedException or
-                PathTooLongException)
+                ArgumentException)
             {
                 List<ClickOnceManifestDiagnostic> resolutionDiagnostics = GetDiagnostics(deploymentManifest);
 

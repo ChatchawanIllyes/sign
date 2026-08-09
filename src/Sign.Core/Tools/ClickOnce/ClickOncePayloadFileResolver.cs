@@ -91,11 +91,7 @@ namespace Sign.Core
                 catch (Exception exception) when (
                     exception is IOException or
                     UnauthorizedAccessException or
-                    InvalidOperationException or
-                    System.Xml.XmlException or
-                    ArgumentException or
-                    NotSupportedException or
-                    PathTooLongException)
+                    ArgumentException)
                 {
                     AddDiagnostics(applicationManifest, diagnostics, ref diagnosticCount);
 
@@ -157,10 +153,7 @@ namespace Sign.Core
                         continue;
                     }
                 }
-                catch (Exception exception) when (
-                    exception is ArgumentException or
-                    NotSupportedException or
-                    PathTooLongException)
+                catch (PathTooLongException exception)
                 {
                     throw new ClickOnceFileGraphResolutionException(
                         string.Format(
@@ -238,7 +231,6 @@ namespace Sign.Core
             }
             catch (Exception exception) when (
                 exception is ArgumentException or
-                NotSupportedException or
                 PathTooLongException)
             {
                 throw new ClickOnceFileGraphResolutionException(
